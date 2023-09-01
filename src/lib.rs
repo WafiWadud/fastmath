@@ -30,7 +30,7 @@ pub fn subtract(mut numbers: Vec<f64>) -> Option<f64> {
 // Define a Python function to divide numbers.
 // Input: a vector of f64 numbers.
 // Output: the value resulting from accumulating division operations to the numbers (first number divided by all the others).
-// Note: if divide by zero is encountered, the function will not panic but return None.
+// Note: if divide by zero is encountered, the function will not panic but return None. 
 #[pyfunction]
 pub fn divide(mut numbers: Vec<f64>) -> Option<f64> {
     let first: f64 = numbers.remove(0);
@@ -45,11 +45,11 @@ pub fn divide(mut numbers: Vec<f64>) -> Option<f64> {
 // Output: the value representing the base raised to the exponent.
 #[pyfunction]
 pub fn pow(base: f64, exponent: f64) -> f64 {
-    let e = exponent.floor();
-    let frac = exponent - e;
-    let mut result = 1.0;
-    let mut b = base;
-    let mut i = e as i64;
+    let e: f64 = exponent.floor();
+    let frac: f64 = exponent - e;
+    let mut result: f64 = 1.0;
+    let mut b: f64 = base;
+    let mut i: i64 = e as i64;
 
     // Real number exponentiation (integer part)
     while i > 0 {
@@ -62,10 +62,10 @@ pub fn pow(base: f64, exponent: f64) -> f64 {
 
     // Real number exponentiation (fractional part) using Newton's method.
     if frac > 0.0 {
-        let root = 1.0 / frac;
-        let mut x = base;
-        let mut y = result;
-        let epsilon = 0.00001;
+        let root: f64 = 1.0 / frac;
+        let mut x: f64 = base;
+        let mut y: f64 = result;
+        let epsilon: f64 = 0.00001;
 
         while (y - x).abs() > epsilon {
             y = x;
